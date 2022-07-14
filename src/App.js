@@ -9,7 +9,7 @@ function App() {
       <header>
         <Navbar />
       </header>
-      <ItemListContainer />
+      <ItemListContainer isLoggedIn={false} />
     </div>
   );
 }

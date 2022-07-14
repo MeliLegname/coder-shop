@@ -7,6 +7,7 @@ module.exports = {
         "regal-blue": "#243c5a",
         black: "#343434",
         white: "#ffff",
+        lila: "#6a75db",
       },
     },
   },
