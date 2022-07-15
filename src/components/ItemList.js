@@ -5,9 +5,13 @@ import { data } from "../utils/products";
 let getData = (prod) => {
   return new Promise((resolve, reject) => {
     if (prod.length > 0) {
-      resolve(prod);
+      setTimeout(() => {
+        resolve(prod);
+      }, 2000);
     } else {
-      reject("No hay stock disponible");
+      reject(
+        "La página no se encuentra disponible en este momento, por favor intente más tarde"
+      );
     }
   });
 };
@@ -19,7 +23,7 @@ const ItemList = () => {
     .then((res) => {
       setProducts(res);
     })
-    .catch((error) => <h1>{error}</h1>);
+    .catch((error) => alert(error));
   return (
     <div className=" w-screen h-5/6	 grid grid-cols-4 gap-2 mt-8">
       {products.map((item, index) => (
