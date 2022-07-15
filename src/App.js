@@ -5,11 +5,11 @@ import ItemListContainer from "./components/ItemListContainer";
 
 function App() {
   return (
-    <div>
+    <div className="h-screen w-screen">
       <header>
         <Navbar />
       </header>
-      <ItemListContainer isLoggedIn={false} />
+      <ItemListContainer />
     </div>
   );
 }
