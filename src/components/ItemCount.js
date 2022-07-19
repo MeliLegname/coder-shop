@@ -6,21 +6,21 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     alert("Lo siento, nos hemos quedado sin stock");
     setCounter(count - 1);
   }
-
+  onAdd(count);
   return (
     <div className="bg-white shadow-lg w-60 h-60 flex flex-col justify-around rounded-2xl	items-center">
       <p>Remera Love</p>
       <div className="flex">
         <button
           className="text-4xl text-lila font-bold p-2 rounded-full shadow-lg h-auto"
-          onClick={() => onAdd(setCounter(count - 1))}
+          onClick={() => setCounter(count - 1)}
         >
           -
         </button>
         <p className="font-bold p-4 text-4xl">{count}</p>
         <button
           className="text-3xl text-lila font-bold p-2 rounded-full shadow-lg h-auto"
-          onClick={() => onAdd(setCounter(count + 1))}
+          onClick={() => setCounter(count + 1)}
         >
           +
         </button>
