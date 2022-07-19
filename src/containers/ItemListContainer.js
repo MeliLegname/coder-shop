@@ -24,7 +24,6 @@ let getData = (prod) => {
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
 
-  console.log(products, data);
   getData(data)
     .then((res) => {
       setProducts(res);
