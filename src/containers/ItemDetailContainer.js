@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import ItemList from "../components/ItemList";
 import { data } from "../utils/products";
-import ItemCount from "../components/ItemCount";
-
+import ItemDetail from "../components/ItemDetail";
 let getData = (prod) => {
   return new Promise((resolve, reject) => {
     if (prod.length > 0) {
       setTimeout(() => {
-        resolve(prod);
+        resolve(prod[0]);
       }, 2000);
     } else {
       reject(
@@ -17,20 +15,16 @@ let getData = (prod) => {
   });
 };
 
-const ItemListContainer = () => {
-  const [products, setProducts] = useState([]);
+const ItemDetailContainer = () => {
+  const [product, setProduct] = useState([]);
 
   getData(data)
     .then((res) => {
-      setProducts(res);
+      setProduct(res);
     })
     .catch((error) => alert(error));
 
-  return (
-    <>
-      <ItemList list={products} />
-    </>
-  );
+  return <ItemDetail item={product} />;
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;

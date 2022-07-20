@@ -8,24 +8,23 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   }
   onAdd(count);
   return (
-    <div className="bg-white shadow-lg w-60 h-60 flex flex-col justify-around rounded-2xl	items-center">
-      <p>Remera Love</p>
-      <div className="flex">
+    <div>
+      <div className="flex justify-between">
         <button
-          className="text-4xl text-lila font-bold p-2 rounded-full shadow-lg h-auto"
+          className="text-4xl text-lila font-bold p-2 "
           onClick={() => setCounter(count - 1)}
         >
           -
         </button>
         <p className="font-bold p-4 text-4xl">{count}</p>
         <button
-          className="text-3xl text-lila font-bold p-2 rounded-full shadow-lg h-auto"
+          className="text-3xl text-lila font-bold p-2 "
           onClick={() => setCounter(count + 1)}
         >
           +
         </button>
       </div>
-      <button className="bg-lila rounded-2xl w-36 p-2 text-white">
+      <button className="border border-lila rounded-2xl w-36 p-2 text-lila text-sm">
         Agregar al carrito
       </button>
     </div>
