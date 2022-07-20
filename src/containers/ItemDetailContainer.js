@@ -5,7 +5,7 @@ let getData = (prod) => {
   return new Promise((resolve, reject) => {
     if (prod.length > 0) {
       setTimeout(() => {
-        resolve(prod[0]);
+        resolve(prod[1]);
       }, 2000);
     } else {
       reject(
