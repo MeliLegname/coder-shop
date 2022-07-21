@@ -3,7 +3,7 @@ import Item from "./Item";
 
 const ItemList = ({ list }) => {
   return (
-    <div className=" w-screen h-5/6	 grid grid-cols-4 gap-2 mt-8">
+    <div className=" w-screen grid grid-cols-4 gap-2 mt-8">
       {list.map((item, index) => (
         <Item
           key={index}
