@@ -33,7 +33,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         </button>
       </div>
       <div className="flex flex-col m-auto">
-        <button className="border border-lila font-medium	 rounded-2xl w-36 p-2 text-lila text-xs hover:opacity-80">
+        <button className=" border  rounded-2xl w-36 p-1 text-lila font-medium border-lila text-sm hover:shadow-lg hover:bg-lila hover:text-white  transition  duration-300 ease-in-out ">
           Agregar al carrito
         </button>
       </div>

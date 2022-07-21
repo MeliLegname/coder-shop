@@ -10,6 +10,10 @@ module.exports = {
         lila: "#6a75db",
         gray: "#757575",
       },
+      height: {
+        124: "30rem",
+        128: "32rem",
+      },
     },
   },
   plugins: [],

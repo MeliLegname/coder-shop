@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import ItemList from "../components/ItemList";
 import { data } from "../utils/products";
-import ItemCount from "../components/ItemCount";
 
 let getData = (prod) => {
   return new Promise((resolve, reject) => {
@@ -19,16 +19,32 @@ let getData = (prod) => {
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-
-  getData(data)
-    .then((res) => {
-      setProducts(res);
-    })
-    .catch((error) => alert(error));
+  const { id } = useParams();
+  useEffect(() => {
+    if (id == undefined) {
+      getData(data)
+        .then((res) => {
+          setProducts(res);
+        })
+        .catch((error) => alert(error));
+    } else {
+      getData(data.filter((item) => item.categoryId === parseInt(id)))
+        .then((res) => {
+          setProducts(res);
+        })
+        .catch((error) => alert(error));
+    }
+  }, [id]);
 
   return (
     <>
-      <ItemList list={products} />
+      {products.length > 0 ? (
+        <ItemList list={products} />
+      ) : (
+        <div className="w-full h-screen flex justify-center items-center">
+          <p className="font-bold">Cargando productos ...</p>
+        </div>
+      )}
     </>
   );
 };
