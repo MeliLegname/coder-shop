@@ -21,7 +21,7 @@ const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    if (id == undefined) {
+    if (id === undefined) {
       getData(data)
         .then((res) => {
           setProducts(res);
