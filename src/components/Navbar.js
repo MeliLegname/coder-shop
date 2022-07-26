@@ -11,16 +11,16 @@ const Navbar = () => {
       <div className="w-2/4">
         <ul className="flex justify-between	">
           <Link to="/category/1">
-            <li className="p-4 cursor-pointer ">Remeras</li>
+            <li className="p-4 cursor-pointer hover:bg-gray">Remeras</li>
           </Link>
           <Link to="category/2">
-            <li className="p-4 cursor-pointer">Pantalones</li>
+            <li className="p-4 cursor-pointer hover:bg-gray">Pantalones</li>
           </Link>
           <Link to="category/3">
-            <li className="p-4 cursor-pointer">Vestidos</li>
+            <li className="p-4 cursor-pointer hover:bg-gray">Vestidos</li>
           </Link>
           <Link to="category/4">
-            <li className="p-4 cursor-pointer">Camperas</li>
+            <li className="p-4 cursor-pointer hover:bg-gray">Camperas</li>
           </Link>
           <li className="p-4 cursor-pointer flex ">
             <CartWidget />

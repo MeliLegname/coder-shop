@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import ItemCount from "./ItemCount";
-
-const onAdd = (res) => {};
+import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const ItemDetail = (props) => {
+  const [ItemsCount, setItemsCount] = useState(0);
+
+  const onAdd = (res) => {
+    setItemsCount(res);
+    console.log(res);
+  };
+  console.log(ItemsCount);
   return (
     <>
       <div className=" flex rounded-2xl shadow-lg p-8 m-16 m-auto	flex-col lg:flex-row w-auto h-auto	">
@@ -26,7 +33,17 @@ const ItemDetail = (props) => {
             </span>
           </div>
           <div>
-            <ItemCount stock={props.item[0].stock} initial={0} onAdd={onAdd} />
+            {ItemsCount === 0 ? (
+              <ItemCount
+                stock={props.item[0].stock}
+                initial={ItemsCount}
+                onAdd={onAdd}
+              />
+            ) : (
+              <Link to="/cart">
+                <Button color="lila" description="Ir al carrito" />
+              </Link>
+            )}
           </div>
         </div>
       </div>

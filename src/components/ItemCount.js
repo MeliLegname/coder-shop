@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCounter] = useState(initial);
-  if (count > stock) {
-    alert("Lo siento, nos hemos quedado sin stock");
-    setCounter(count - 1);
-  }
-  if (count < 0) {
-    alert("No puedes contar stock negativo");
-    setCounter(count + 1);
-  }
-  onAdd(count);
+
+  const increment = () => {
+    if (count < stock) {
+      setCounter(count + 1);
+    }
+  };
+  const decrement = () => {
+    if (count > initial + 1) {
+      setCounter(count - 1);
+    }
+  };
   return (
     <div className="w-36	m-2">
       <span className="text-xs italic my-2 text-center text-gray">
@@ -20,22 +23,26 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       <div className="flex justify-center">
         <button
           className="text-2xl text-lila font-bold w-4 hover:opacity-80	 "
-          onClick={() => setCounter(count - 1)}
+          onClick={decrement}
         >
           -
         </button>
         <p className="font-bold p-4 text-xl">{count}</p>
         <button
           className="text-2xl text-lila font-bold  w-4	hover:opacity-80"
-          onClick={() => setCounter(count + 1)}
+          onClick={increment}
         >
           +
         </button>
       </div>
       <div className="flex flex-col m-auto">
-        <button className=" border  rounded-2xl w-36 p-1 text-lila font-medium border-lila text-sm hover:shadow-lg hover:bg-lila hover:text-white  transition  duration-300 ease-in-out ">
-          Agregar al carrito
-        </button>
+        <Button
+          onClick={() => {
+            onAdd(count);
+          }}
+          color="lila"
+          description="Agregar al carrito"
+        />
       </div>
     </div>
   );

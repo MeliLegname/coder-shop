@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const Item = ({ type, price, stock, id, name, image }) => {
   return (
@@ -17,9 +18,7 @@ const Item = ({ type, price, stock, id, name, image }) => {
         Stock disponible: {stock}
       </span>
       <Link to={`/item/${id}`} className=" m-auto">
-        <button className=" border  rounded-2xl w-32 p-1 text-lila font-medium border-lila text-sm hover:shadow-lg hover:bg-lila hover:text-white  transition  duration-300 ease-in-out ">
-          ver más
-        </button>
+        <Button color="lila" description="ver más" />
       </Link>
     </div>
   );
