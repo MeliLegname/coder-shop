@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 const BackNavigate = () => {
   return (
     <Link to="/">
-      {" "}
-      <p className="text-gray p-8"> volver</p>
+      <div className="p-8 flex">
+        <img src="/icon_arrow.svg" className="w-3 mx-2 mt-px " />
+        <p className="text-gray "> volver</p>
+      </div>
     </Link>
   );
 };

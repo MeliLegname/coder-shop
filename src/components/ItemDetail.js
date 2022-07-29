@@ -6,16 +6,20 @@ import { CartContext } from "./CartContext";
 
 const ItemDetail = ({ item }) => {
   const [ItemsCount, setItemsCount] = useState(0);
-  const test = useContext(CartContext);
+  const data = useContext(CartContext);
 
   const onAdd = (res) => {
-    setItemsCount(res);
-    test.addToCart(item, res);
+    if (!data.isInCart(item.category.id)) {
+      setItemsCount(res);
+      data.addToCart(item, res);
+    } else {
+      alert("Este producto ya existe en el carrito.");
+    }
   };
   return (
     <>
       <div className=" flex rounded-2xl shadow-lg p-8 m-16 m-auto	flex-col lg:flex-row w-auto h-auto	">
-        <img src={item.image} className=" m-auto max-w-xs md:max-w-sm	" />
+        <img src={item.image} className=" m-auto max-w-xs md:max-w-sm" />
         <div className=" h-full flex flex-col justify-between  m-auto  w-40	">
           <div className="flex flex-col  m-2  ">
             <h3 className="text-xl font-bold ">

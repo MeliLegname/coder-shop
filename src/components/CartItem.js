@@ -2,7 +2,7 @@ import React from "react";
 
 const CartItem = ({ item, onRemove }) => {
   return (
-    <div className="flex justify-between items-center  rounded-2xl shadow-lg p-8 m-16 m-auto		">
+    <div className="flex justify-between items-center  rounded-2xl shadow-lg p-8 m-8	">
       <img className=" max-w-xs md:max-w-sm h-40" src={item.image} />
       <p>
         {item.type} {item.name}

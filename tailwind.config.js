@@ -4,12 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "regal-blue": "#243c5a",
+        red: "#EF4444",
         black: "#343434",
         white: "#ffff",
         lila: "#6a75db",
         gray: "#757575",
-        red: "#ec0e16",
+        "gray-2": "#e1e1e1",
       },
       height: {
         124: "30rem",
