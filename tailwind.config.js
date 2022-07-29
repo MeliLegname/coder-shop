@@ -9,6 +9,7 @@ module.exports = {
         white: "#ffff",
         lila: "#6a75db",
         gray: "#757575",
+        red: "#ec0e16",
       },
       height: {
         124: "30rem",

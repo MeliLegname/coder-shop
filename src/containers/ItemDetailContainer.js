@@ -21,7 +21,6 @@ const ItemDetailContainer = () => {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    console.log();
     if (id === undefined) {
     } else {
       getData(data.filter((item) => item.category.id === parseInt(id)))
@@ -36,7 +35,7 @@ const ItemDetailContainer = () => {
       {product.length > 0 ? (
         <>
           <BackNavigate />
-          <ItemDetail item={product} />
+          <ItemDetail item={product[0]} />
         </>
       ) : (
         <div className="w-full h-screen flex justify-center items-center">
