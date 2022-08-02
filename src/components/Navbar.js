@@ -25,9 +25,11 @@ const Navbar = () => {
           <Link to="category/4">
             <li className="p-4 cursor-pointer hover:bg-gray">Camperas</li>
           </Link>
-          <li className="p-4 cursor-pointer flex ">
-            <CartWidget items={data.countItems} />
-          </li>
+          <Link to="/cart">
+            <li className="p-4 cursor-pointer flex hover:bg-gray">
+              <CartWidget items={data.countItems} />
+            </li>
+          </Link>
         </ul>{" "}
       </div>{" "}
     </div>

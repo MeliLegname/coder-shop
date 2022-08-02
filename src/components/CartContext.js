@@ -25,15 +25,19 @@ const CartContextProvider = ({ children }) => {
     setCartList([]);
   };
   const countItemsFn = (data, num) => {
-    if (num) {
+    if (num && num !== 0) {
       const newValue = countItems + num;
       setCountItems(newValue);
     } else {
-      cartList.map((res) => {
-        if (res.category.id === data.id) {
-          setCountItems(countItems - res.quantity);
-        }
-      });
+      if (num === 0) {
+        setCountItems(0);
+      } else {
+        cartList.map((res) => {
+          if (res.category.id === data.id) {
+            setCountItems(countItems - res.quantity);
+          }
+        });
+      }
     }
   };
   return (

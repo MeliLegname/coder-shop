@@ -3,6 +3,7 @@ import BackNavigate from "../components/BackNavigate";
 import Button from "../components/Button";
 import { CartContext } from "../components/CartContext";
 import CartItem from "../components/CartItem";
+import { Link } from "react-router-dom";
 
 const CartContainer = () => {
   const data = useContext(CartContext);
@@ -14,6 +15,7 @@ const CartContainer = () => {
   };
   const onClear = () => {
     data.clear();
+    data.countItemsFn("", 0);
   };
   return (
     <>
@@ -41,10 +43,15 @@ const CartContainer = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full h-screen flex justify-center p-80">
-          <p className="font-bold text-gray">
-            Todavía no hay productos en el carrito.
+        <div className="w-full h-screen flex justify-center flex-col	items-center  p-80">
+          <p className="font-bold text-gray m-6">
+            No hay productos en el carrito.
           </p>
+          <Link to="/">
+            <button className="border flex rounded-2xl w-36 p-1 text-lila font-medium border-lila text-sm hover:shadow-lg hover:bg-white hover:text-lila  transition  duration-300 ease-in-out justify-center">
+              Seguir comprando
+            </button>
+          </Link>
         </div>
       )}
     </>
