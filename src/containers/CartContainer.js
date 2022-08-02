@@ -8,7 +8,9 @@ const CartContainer = () => {
   const data = useContext(CartContext);
 
   const onRemove = (res) => {
+    console.log("onremovve", res);
     data.removeToCart(res);
+    data.countItemsFn(res);
   };
   const onClear = () => {
     data.clear();

@@ -12,6 +12,7 @@ const ItemDetail = ({ item }) => {
     if (!data.isInCart(item.category.id)) {
       setItemsCount(res);
       data.addToCart(item, res);
+      data.countItemsFn(item, res);
     } else {
       alert("Este producto ya existe en el carrito.");
     }
