@@ -1,41 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { data } from "../utils/products";
-import ItemDetail from "../components/ItemDetail";
 import { useParams } from "react-router";
+import ItemDetail from "../components/ItemDetail";
 import BackNavigate from "../components/BackNavigate";
+import { collection, getDocs, where, query } from "firebase/firestore";
+import { db } from "../utils/firebaseConfig";
 
-let getData = (prod) => {
-  return new Promise((resolve, reject) => {
-    if (prod.length > 0) {
-      setTimeout(() => {
-        resolve(prod);
-      }, 2000);
-    } else {
-      reject(
-        "La página no se encuentra disponible en este momento, por favor intente más tarde"
-      );
-    }
-  });
-};
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
+
   useEffect(() => {
-    if (id === undefined) {
-    } else {
-      getData(data.filter((item) => item.category.id === parseInt(id)))
-        .then((res) => {
-          setProduct(res);
-        })
-        .catch((error) => alert(error));
-    }
+    const fireStoreFetch = async () => {
+      const querySnapshot = await getDocs(collection(db, "products"));
+      const dataFireStore = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      return dataFireStore;
+    };
+    fireStoreFetch()
+      .then((res) => {
+        console.log(res);
+        res.filter((doc) => {
+          if (doc.id === id) {
+            return setProduct(doc);
+          }
+        });
+      })
+      .catch((err) => alert("Algo ha salido mal."));
   }, [id]);
   return (
     <>
-      {product.length > 0 ? (
+      {product ? (
         <>
           <BackNavigate />
-          <ItemDetail item={product[0]} />
+          <ItemDetail item={product} />
         </>
       ) : (
         <div className="w-full h-screen flex justify-center items-center">

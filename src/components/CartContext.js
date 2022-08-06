@@ -13,18 +13,22 @@ const CartContextProvider = ({ children }) => {
     }
   };
   const isInCart = (id) => {
-    const checkInCart = cartList.filter((i) => i.category.id === id).length > 0;
+    const checkInCart = cartList.filter((i) => i.id === id).length > 0;
     return checkInCart;
   };
 
   const removeToCart = (itemD) => {
-    const newCartList = cartList.filter((i) => i.category.id !== itemD.id);
+    console.log("itemdelete", itemD, cartList);
+    const newCartList = cartList.filter((i) => i.id == itemD.id);
+    console.log(newCartList);
     setCartList(newCartList);
   };
   const clear = () => {
     setCartList([]);
   };
   const countItemsFn = (data, num) => {
+    console.log("cartItem data", data);
+    console.log("cartItem num", num);
     if (num && num !== 0) {
       const newValue = countItems + num;
       setCountItems(newValue);
@@ -33,7 +37,7 @@ const CartContextProvider = ({ children }) => {
         setCountItems(0);
       } else {
         cartList.map((res) => {
-          if (res.category.id === data.id) {
+          if (res.id === data.id) {
             setCountItems(countItems - res.quantity);
           }
         });

@@ -1,6 +1,7 @@
 import React from "react";
 
 const CartItem = ({ item, onRemove }) => {
+  console.log(item, "iteeeeeeeeeeeeem");
   return (
     <div className="flex justify-between items-center  rounded-2xl shadow-lg p-8 m-8	">
       <img className=" max-w-xs md:max-w-sm h-40" src={item.image} />
@@ -12,7 +13,7 @@ const CartItem = ({ item, onRemove }) => {
       <p>$ {item.price * item.quantity}</p>
       <button
         onClick={() => {
-          onRemove(item.category);
+          onRemove(item.id);
         }}
       >
         {" "}

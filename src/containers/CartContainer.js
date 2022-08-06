@@ -27,7 +27,7 @@ const CartContainer = () => {
             <p className="ml-20	">nombre</p>
             <p className="ml-24	">cantidad</p>
             <p className="ml-28	">precio</p>
-            <p className="ml-32	">total</p>
+            <p className="ml-32	">Subtotal</p>
             <div></div>
           </div>
           {data.cartList.map((item, index) => (

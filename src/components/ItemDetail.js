@@ -7,9 +7,12 @@ import { CartContext } from "./CartContext";
 const ItemDetail = ({ item }) => {
   const [ItemsCount, setItemsCount] = useState(0);
   const data = useContext(CartContext);
+  console.log("estado ", data);
 
   const onAdd = (res) => {
-    if (!data.isInCart(item.category.id)) {
+    console.log("alvin gil", !data.isInCart(item.id));
+    console.log(" alvin item", item);
+    if (!data.isInCart(item.id)) {
       setItemsCount(res);
       data.addToCart(item, res);
       data.countItemsFn(item, res);
