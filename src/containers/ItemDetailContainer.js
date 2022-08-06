@@ -20,7 +20,6 @@ const ItemDetailContainer = () => {
     };
     fireStoreFetch()
       .then((res) => {
-        console.log(res);
         res.filter((doc) => {
           if (doc.id === id) {
             return setProduct(doc);

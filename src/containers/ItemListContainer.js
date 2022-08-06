@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ItemList from "../components/ItemList";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig";
+
+const categoryList = ["remeras", "pantalones", "vestidos", "camperas"];
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -18,7 +20,19 @@ const ItemListContainer = () => {
     };
     fireStoreFetch()
       .then((res) => {
-        setProducts(res);
+        categoryList.forEach((item) => {
+          if (id === item) {
+            const productsListFilter = [];
+            res.filter((data) => {
+              if (data.categoryId === id) {
+                productsListFilter.push(data);
+                setProducts(productsListFilter);
+              }
+            });
+          } else if (id === undefined) {
+            setProducts(res);
+          }
+        });
       })
       .catch((err) =>
         alert(

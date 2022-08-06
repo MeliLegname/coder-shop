@@ -18,17 +18,13 @@ const CartContextProvider = ({ children }) => {
   };
 
   const removeToCart = (itemD) => {
-    console.log("itemdelete", itemD, cartList);
     const newCartList = cartList.filter((i) => i.id == itemD.id);
-    console.log(newCartList);
     setCartList(newCartList);
   };
   const clear = () => {
     setCartList([]);
   };
   const countItemsFn = (data, num) => {
-    console.log("cartItem data", data);
-    console.log("cartItem num", num);
     if (num && num !== 0) {
       const newValue = countItems + num;
       setCountItems(newValue);
