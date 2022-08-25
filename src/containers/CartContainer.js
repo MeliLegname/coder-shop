@@ -4,10 +4,11 @@ import Button from "../components/Button";
 import { CartContext } from "../components/CartContext";
 import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
+import { collection, serverTimestamp, setDoc, doc } from "firebase/firestore";
+import { db } from "../utils/firebaseConfig";
 
 const CartContainer = () => {
   const data = useContext(CartContext);
-  const algo = () => {};
   const taxs = (data.orderSummary * 10) / 100;
   const total = data.orderSummary + taxs;
   const onRemove = (res) => {
@@ -21,16 +22,30 @@ const CartContainer = () => {
   };
 
   const createOrder = () => {
+    let itemsForDB = data.cartList.map((item) => ({
+      id: item.id,
+      title: item.type + " " + item.name,
+      price: item.price,
+      qty: item.quantity,
+    }));
     let order = {
       buyer: {
         name: "Milagros perez",
         email: "milagrospe@correo.com",
         phone: "1145029947",
       },
-      date: "20/04/2022",
-      items: data.cartList,
-      total: "algo",
+      date: serverTimestamp(),
+      items: itemsForDB,
+      total: total,
     };
+    console.log(order);
+    const createOrderInFirestore = async () => {
+      const newOrderRef = doc(collection(db, "orders"));
+      await setDoc(newOrderRef, order);
+    };
+    createOrderInFirestore()
+      .then((result) => alert("Tu orden ha sido creada"))
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -77,9 +92,9 @@ const CartContainer = () => {
                 onClick={onClear}
               />
               <Button
-                color="lila"
+                onClick={createOrder}
                 description="Comprar ahora"
-                onClick={onClear}
+                color="lila"
               />
             </div>
           </div>
