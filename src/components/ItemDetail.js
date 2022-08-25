@@ -42,7 +42,13 @@ const ItemDetail = ({ item }) => {
               />
             ) : (
               <Link to="/cart">
-                <Button color="lila" description="Ir al carrito" />
+                <Button
+                  onClick={() => {
+                    data.countTotalItems();
+                  }}
+                  color="lila"
+                  description="Ir al carrito"
+                />
               </Link>
             )}
           </div>
