@@ -50,16 +50,8 @@ const CartContainer = () => {
             {data.cartList.map((item, index) => (
               <CartItem item={item} key={index} onRemove={onRemove} />
             ))}
-            <div className="flex w-full justify-end p-8">
-              <Button
-                color="gray"
-                description="vaciar carrito"
-                icon="delete"
-                onClick={onClear}
-              />
-            </div>
           </div>
-          <div className="w-1/4 flex flex-col justify-between rounded-2xl shadow-lg p-8 m-8">
+          <div className="w-1/4 flex flex-col justify-between rounded-2xl shadow-lg p-8 m-8 h-80	">
             {" "}
             <h3 className="text-lg text-center font-semibold uppercase mb-4">
               orden de compra
@@ -77,12 +69,19 @@ const CartContainer = () => {
               <span>$ {total}</span>
             </div>
             <hr></hr>
-            <Button
-              className=" mx-auto"
-              color="lila"
-              description="Comprar ahora"
-              onClick={onClear}
-            />
+            <div className="flex">
+              <Button
+                className=" mr-4 "
+                color="gray"
+                description="Vaciar carrito"
+                onClick={onClear}
+              />
+              <Button
+                color="lila"
+                description="Comprar ahora"
+                onClick={onClear}
+              />
+            </div>
           </div>
         </div>
       ) : (
