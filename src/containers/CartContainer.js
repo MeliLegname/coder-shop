@@ -4,7 +4,14 @@ import Button from "../components/Button";
 import { CartContext } from "../components/CartContext";
 import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
-import { collection, serverTimestamp, setDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  serverTimestamp,
+  setDoc,
+  doc,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
 import { db } from "../utils/firebaseConfig";
 
 const CartContainer = () => {
@@ -46,6 +53,12 @@ const CartContainer = () => {
     createOrderInFirestore()
       .then((result) => alert("Tu orden ha sido creada"))
       .catch((e) => console.log(e));
+    data.cartList.forEach(async (item) => {
+      console.log(item);
+      const itemRef = doc(db, "products", item.id);
+      await updateDoc(itemRef, { stock: increment(-item.quantity) });
+    });
+    onClear();
   };
 
   return (
